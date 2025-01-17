@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Plane Animation</title>
+    <style>
+        /* reset css */
+        html, body, div, img {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        body, html {
+            background: white;
+        }
+
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            position: relative;
+        }
+
+        .paper-plane {
+            animation: 
+                fly 1.2s 0.5s 1 cubic-bezier(0.30, 0, 0.60, 0) backwards,
+                fly2 1.2s 1.7s 1 cubic-bezier(0.33, 1, 0.68, 1) forwards,
+                bright 0.3s 2.85s 1 ease-out forwards;
+            offset-path: path("M 10 20 C 12 115 -89 158 -87 77");
+            top: 16px;
+            right: -26px;
+            position: absolute;
+            z-index: 2;
+            
+        }
+
+        .p-letter {
+            position: relative;
+            z-index: 2;
+            animation: bright 0.3s 2.85s 1 ease-out forwards;
+        }
+
+        @keyframes fly {
+            0% {
+                offset-distance: 0%;
+                transform: translateY(40px);
+                z-index: 1;
+            }
+
+            45% {
+                z-index: 1;
+                top: 16px;
+            }
+
+            100% {
+                transform: translateY(0px);
+                offset-distance: 100%;
+                z-index: 3;
+            }
+        }
+
+        @keyframes fly2 {
+            0% {
+                offset-distance: 0%;
+                offset-path: path("M -87 77 C -86 13 -16 0 0 0");
+            }
+            100% {
+                offset-distance: 100%;
+                offset-path: path("M -87 77 C -86 13 -16 0 0 0");
+                top: 16px;
+            }
+        }
+
+        @keyframes bright {
+            0% {
+                filter: brightness(1);
+            }
+            20% {
+                filter: brightness(1.2);
+            }
+            100% {
+                filter: brightness(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="logo">
+            <img src="./p-letter.png" width="114" height="108" class="p-letter">
+            <img src="./paper-plane.png" class="paper-plane">
+        </div>
+    </div>
+</body>
+</html>
